@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-backend
+  labels:
+    app: {{ .Release.Name }}-backend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-backend
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-backend
+    spec:
+      containers:
+          - name: game-service
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+            imagePullPolicy: {{ .Values.image.pullPolicy }}
+            ports:
+              - containerPort: 5003
+            env:
+              - name: CLICKHOUSE_HOST
+                value: "{{ .Values.env.CLICKHOUSE_HOST }}"
+              - name: CLICKHOUSE_PORT
+                value: "{{ .Values.env.CLICKHOUSE_PORT }}"
+              - name: CLICKHOUSE_USER
+                value: "{{ .Values.env.CLICKHOUSE_USER }}"
+              - name: CLICKHOUSE_PASSWORD
+                value: "{{ .Values.env.CLICKHOUSE_PASSWORD }}"
+              - name: CLICKHOUSE_DB
+                value: "{{ .Values.env.CLICKHOUSE_DB }}"

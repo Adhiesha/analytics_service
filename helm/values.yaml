@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: adeeshadev/analytics-service
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 5003
+
+env:
+  CLICKHOUSE_HOST: "clickhouse-server"
+  CLICKHOUSE_PORT: "9000"
+  CLICKHOUSE_USER: "analytics_user"
+  CLICKHOUSE_PASSWORD: "test123"
+  CLICKHOUSE_DB: "analytics"
