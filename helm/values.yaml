@@ -10,7 +10,7 @@ service:
   port: 5003
 
 clickhouse:
-  host: clickhouse-server
+  host: clickhouse-server-clickhouse
   db: analytics
   user: analytics_user
   password: test123
