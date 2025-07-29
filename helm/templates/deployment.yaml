@@ -22,13 +22,13 @@ spec:
               - containerPort: 5003
             env:
               - name: CLICKHOUSE_HOST
-                value: "{{ .Values.env.CLICKHOUSE_HOST }}"
+                value: "{{ .Values.clickhouse.host }}"
               - name: CLICKHOUSE_PORT
-                value: "{{ .Values.env.CLICKHOUSE_PORT }}"
+                value: "{{ .Values.clickhouse.port }}"
               - name: CLICKHOUSE_USER
-                value: "{{ .Values.env.CLICKHOUSE_USER }}"
+                value: "{{ .Values.clickhouse.user }}"
               - name: CLICKHOUSE_DB
-                value: "{{ .Values.env.CLICKHOUSE_DB }}"
+                value: "{{ .Values.clickhouse.db }}"
               - name: CLICKHOUSE_PASSWORD
                 valueFrom:
                   secretKeyRef:

@@ -9,11 +9,9 @@ service:
   type: ClusterIP
   port: 5003
 
-env:
-  CLICKHOUSE_HOST: "clickhouse-server"
-  CLICKHOUSE_PORT: "9000"
-  CLICKHOUSE_USER: "analytics_user"
-  CLICKHOUSE_DB: "analytics"
-
-secretEnv:
-  CLICKHOUSE_PASSWORD: "test123"
+clickhouse:
+  host: clickhouse-server
+  db: analytics
+  user: analytics_user
+  password: test123
+  port: 9000
