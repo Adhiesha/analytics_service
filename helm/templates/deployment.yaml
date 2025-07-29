@@ -15,7 +15,7 @@ spec:
         app: {{ .Release.Name }}-backend
     spec:
       containers:
-          - name: game-service
+          - name: analytics-service
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
             imagePullPolicy: {{ .Values.image.pullPolicy }}
             ports:
@@ -27,7 +27,10 @@ spec:
                 value: "{{ .Values.env.CLICKHOUSE_PORT }}"
               - name: CLICKHOUSE_USER
                 value: "{{ .Values.env.CLICKHOUSE_USER }}"
-              - name: CLICKHOUSE_PASSWORD
-                value: "{{ .Values.env.CLICKHOUSE_PASSWORD }}"
               - name: CLICKHOUSE_DB
                 value: "{{ .Values.env.CLICKHOUSE_DB }}"
+              - name: CLICKHOUSE_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ .Release.Name }}-clickhouse-secret
+                    key: CLICKHOUSE_PASSWORD
