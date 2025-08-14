@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: adeeshadev/analytics-service
-  tag: latest
+  tag: "develop-8"
   pullPolicy: Always
 
 service:
